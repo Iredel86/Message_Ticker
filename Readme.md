@@ -1,0 +1,1 @@
+# Simple Messages Ticker exmaple using jQuery

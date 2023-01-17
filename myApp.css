@@ -1,0 +1,82 @@
+
+        body {
+            background: black;
+        }
+
+        h1.title {
+            background-image: url(sources/bg.png);
+            align-self: center;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        #title {
+            padding: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        #ticker-wrapper {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        #ticker-wrapper ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        #ticker-wrapper img {
+            width: 60px;
+            height: 60px;
+            margin: 5px 5px 5px 5px;
+            grid-area: img;
+            border: 2px solid red;
+            border-radius: 2px;
+            background-color: red;
+        }
+
+        .messageContent {
+            margin: 15px 0 0;
+            font-size: 16px;
+            line-height: 28px;
+            grid-area: p;
+            word-wrap: break-word;
+            color: white;
+        }
+
+        #ticker-wrapper li:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        #ticker-wrapper li {
+            padding: 20px;
+            background-image: url(sources/post_bg.png);
+            background-size: cover;
+            display: grid;
+            grid-template-columns: 0.4fr 1.6fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            gap: 0px 0px;
+            grid-template-areas:
+                "img name name name name name"
+                "img date date date date date"
+                "p p p p p p"
+                "p p p p p p"
+                "p p p p p p";
+        }
+
+        .userNameSpan {
+            grid-area: name;
+            color: white;
+        }
+
+        .dateSpan {
+            grid-area: date;
+            color: red;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }

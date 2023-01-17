@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="myApp.css">
+    <title>Messages</title>
+
+
+    <script src="jquery-3.6.3.min.js"></script>
+
+    <script>
+        var images = new Array();
+        images[0] = "https://picsum.photos/100/300";
+        images[1] = "https://picsum.photos/200/300";
+        images[2] = "https://picsum.photos/50/100";
+        images[3] = "https://picsum.photos/200/250";
+
+        class Message {
+
+            constructor(senderName, body) {
+                this.senderName = senderName;
+                let date = new Date();
+                this.date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' +
+                    (('0' + date.getHours()).slice(-2)) + ':' + (('0' + date.getMinutes()).slice(-2));
+                this.body = body;
+            }
+
+            display = function () {
+                return this.senderName + "<br>" + this.date + "<br> " + this.body;
+            }
+        }
+        var messages = new Array(10);
+
+        
+        for (let i = 0; i < messages.length; i++) {
+            messages[i] = new Message("User" + i, " Hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo my name is user " + i);
+        }
+        
+
+        function createMessages() {
+            let ul = $("#ul");
+            for (let i = 0; i < messages.length; i++) {
+                let randImage = Math.floor(Math.random() * 4);
+                let newImage = $("<img>").attr("src", images[randImage]);
+                let newLi = $("<li>");
+                let userNameSpan = $("<span>").html(messages[i].senderName);
+                userNameSpan.attr("class", "userNameSpan");
+                let dateSpan = $("<span>").html(messages[i].date);
+                dateSpan.attr("class", "dateSpan");
+                let newP = $("<div>").html(messages[i].body);
+                newP.attr("class", "messageContent")
+                newLi.append(newImage);
+                newLi.append(userNameSpan);
+                newLi.append(dateSpan);
+                newLi.append(newP);
+                ul.append(newLi);
+            }
+        }
+
+    </script>
+</head>
+
+<body onload="createMessages()">
+
+
+    <h1 class="title">
+        <img id="title" src="sources/title.png" alt="">
+    </h1>
+
+    <div id="ticker-wrapper">
+        <ul id="ul">
+
+        </ul>
+    </div>
+
+    <script src="jquery.easy-ticker.js"></script>
+
+    <script>
+        $("#ticker-wrapper").easyTicker({
+            direction: 'down',
+            easing: 'swing',
+            visible: 3,
+            mousePause: 1
+        });
+    </script>
+</body>
+
+</html>
